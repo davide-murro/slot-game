@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #222222;
+    
+    background-image: url(/images/background.svg);
+    background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: cover;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#app #container {
+    /*width: 1920px;
+    height: 1080px;*/
+    width: 640px;
+    height: 480px;
+    min-width: 640px;
+    min-height: 480px;
+    overflow: hidden;
+}
