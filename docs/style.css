@@ -4,7 +4,7 @@ body {
     color: rgba(255, 255, 255, 0.87);
     background-color: #222222;
     
-    background-image: url(/images/background.svg);
+    background-image: url(./images/background.svg);
     background-size: 100% 100%;
     -o-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
