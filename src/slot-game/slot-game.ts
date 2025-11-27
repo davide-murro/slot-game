@@ -3,6 +3,7 @@ import { UISystem } from "./ui-system";
 import { Reel } from "./reel";
 import { GAME_CONSTANTS } from "../constants";
 import { Sound } from "@pixi/sound";
+import { LoadedAssets } from "../interfaces/loaded-assets.interface";
 
 export class SlotGame extends Container {
   private ui: UISystem;
@@ -16,7 +17,7 @@ export class SlotGame extends Container {
   private balance: number = GAME_CONSTANTS.INITIAL_BALANCE;
   private isSpinning: boolean = false;
 
-  constructor(app: Application, assets: any) {
+  constructor(app: Application, assets: LoadedAssets) {
     super();
 
     // Create and add UI
@@ -37,13 +38,13 @@ export class SlotGame extends Container {
     this.initSpinButton();
 
     // Setup Audio
-    this.backgroundMusic = assets.general.background_music;
+    this.backgroundMusic = assets.general.background_music as Sound;
     this.backgroundMusic.loop = true;
     window.addEventListener("pointerdown", () => {
       if (!this.backgroundMusic.isPlaying) this.backgroundMusic.play();
     });
-    
-    this.winMusic = assets.game.win_music;
+
+    this.winMusic = assets.game.win_music as Sound;
 
     // Add self to stage
     app.stage.addChild(this);
@@ -117,7 +118,7 @@ export class SlotGame extends Container {
     // set position and multiplier
     if (maxCount >= 2) {
       const maxCountSymbol = Object.keys(counts).find(
-        (sym) => counts[sym] === maxCount
+        (sym) => counts[sym] === maxCount,
       );
 
       multiplier = maxCount;

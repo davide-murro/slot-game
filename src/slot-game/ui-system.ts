@@ -1,5 +1,6 @@
 import { Text, TextStyle, Sprite, Container, Texture } from "pixi.js";
 import { GAME_CONSTANTS } from "../constants";
+import { LoadedAssets } from "../interfaces/loaded-assets.interface";
 
 export class UISystem extends Container {
   private balanceText: Text;
@@ -15,17 +16,17 @@ export class UISystem extends Container {
   private spinButtonDisabledTexture: Texture;
   private spinButtonEnabledTexture: Texture;
 
-  constructor(assets: any, appWidth: number, appHeight: number) {
+  constructor(assets: LoadedAssets, appWidth: number, appHeight: number) {
     super();
-    this.reelTexture = assets.ui.reel;
-    this.winBackgroundTexture = assets.ui.win_bg;
-    this.spinButtonEnabledTexture = assets.ui.play;
-    this.spinButtonDisabledTexture = assets.ui.play_disabled;
+    this.reelTexture = assets.ui.reel as Texture;
+    this.winBackgroundTexture = assets.ui.win_bg as Texture;
+    this.spinButtonEnabledTexture = assets.ui.play as Texture;
+    this.spinButtonDisabledTexture = assets.ui.play_disabled as Texture;
 
     const textStyle = new TextStyle({
       fill: "gold",
       fontSize: 50,
-      fontFamily: assets.general.font.family,
+      fontFamily: (assets.general.font as FontFace).family,
     });
 
     // Balance Text
@@ -74,13 +75,12 @@ export class UISystem extends Container {
       winBackground.anchor.set(0.5, 0); // Center horizontally, top anchored vertically
       winBackground.position.set(
         this.reel.width / 2,
-        index * winBackground.height
+        index * winBackground.height,
       );
       winBackground.visible = false;
       this.winBackgrounds.push(winBackground);
       this.addChild(winBackground);
     }
-
   }
 
   public getSpinButton(): Sprite {
@@ -109,7 +109,8 @@ export class UISystem extends Container {
 
   public updateWinBackgrounds(result: number[]): void {
     for (let index = 0; index < this.winBackgrounds.length; index++) {
-        this.winBackgrounds[index].visible = result.find(r => r === index) != null;
+      this.winBackgrounds[index].visible =
+        result.find((r) => r === index) != null;
     }
   }
 

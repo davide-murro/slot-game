@@ -1,0 +1,80 @@
+{
+    "bundles": [
+        {
+            "name": "general",
+            "assets": [
+                {
+                    "alias": "font",
+                    "src": "/fonts/Bangers/Bangers-Regular.ttf"
+                },
+                {
+                    "alias": "background_music",
+                    "src": "/audio/background.mp3"
+                }
+            ]
+        },
+        {
+            "name": "ui",
+            "assets": [
+                {
+                    "alias": "play",
+                    "src": "/images/PLAY.png"
+                },
+                {
+                    "alias": "play_disabled",
+                    "src": "/images/PLAY_DISABLED.png"
+                },
+                {
+                    "alias": "reel",
+                    "src": "/images/REEL.png"
+                },
+                {
+                    "alias": "win_bg",
+                    "src": "/images/WIN_BG.png"
+                }
+            ]
+        },
+        {
+            "name": "game",
+            "assets": [
+                {
+                    "alias": "spin_music",
+                    "src": "/audio/reel-spin.mp3"
+                },
+                {
+                    "alias": "win_music",
+                    "src": "/audio/win.mp3"
+                }
+            ]
+        },
+        {
+            "name": "symbols",
+            "assets": [
+                {
+                    "alias": "sym01",
+                    "src": "/images/SYM01.png"
+                },
+                {
+                    "alias": "sym02",
+                    "src": "/images/SYM02.png"
+                },
+                {
+                    "alias": "sym03",
+                    "src": "/images/SYM03.png"
+                },
+                {
+                    "alias": "sym04",
+                    "src": "/images/SYM04.png"
+                },
+                {
+                    "alias": "sym05",
+                    "src": "/images/SYM05.png"
+                },
+                {
+                    "alias": "sym06",
+                    "src": "/images/SYM06.png"
+                }
+            ]
+        }
+    ]
+}

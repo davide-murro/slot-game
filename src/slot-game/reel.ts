@@ -1,6 +1,7 @@
 import { Container, Sprite, Ticker, Texture, Graphics } from "pixi.js";
 import { REEL_SYMBOLS, SYMBOL_TO_ALIAS, GAME_CONSTANTS } from "../constants";
 import { Sound } from "@pixi/sound";
+import { LoadedAssets } from "../interfaces/loaded-assets.interface";
 
 export class Reel extends Container {
   private reel: Sprite;
@@ -21,7 +22,7 @@ export class Reel extends Container {
 
   private spinMusic: Sound;
 
-  constructor(assets: any, reel: Sprite) {
+  constructor(assets: LoadedAssets, reel: Sprite) {
     super();
     this.reel = reel;
 
@@ -29,14 +30,14 @@ export class Reel extends Container {
     this.symbolWidth = this.symbolHeight;
     this.initSymbolStrip(assets);
 
-    this.spinMusic = assets.game.spin_music;
+    this.spinMusic = assets.game.spin_music as Sound;
   }
 
-  private initSymbolStrip(assets: any): void {
+  private initSymbolStrip(assets: LoadedAssets): void {
     // Create the infinitely scrolling strip
     const symbolTextures: { [key: string]: Texture } = {};
     for (const alias of Object.values(SYMBOL_TO_ALIAS)) {
-      symbolTextures[alias] = assets.symbols[alias];
+      symbolTextures[alias] = assets.symbols[alias] as Texture;
     }
 
     let index = 0;
@@ -73,7 +74,7 @@ export class Reel extends Container {
         this.reel.x,
         this.reel.y,
         this.reel.width, // Use full width of the reel texture
-        this.height
+        this.height,
       )
       .fill({ color: 0x000000 });
     this.mask = reelMask;
@@ -171,8 +172,7 @@ export class Reel extends Container {
     const currentSymbol = Math.abs(Math.round(this.y / this.symbolHeight));
     const result: string[] = [];
     for (let index = 0; index < GAME_CONSTANTS.VISIBLE_SYMBOLS; index++) {
-        result.push(REEL_SYMBOLS[(currentSymbol + index) % REEL_SYMBOLS.length])
-        
+      result.push(REEL_SYMBOLS[(currentSymbol + index) % REEL_SYMBOLS.length]);
     }
     return result;
   }
